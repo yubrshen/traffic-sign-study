@@ -2,6 +2,7 @@ import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import math
 def display_samples(X, title, title_str, xlabel, xlabel_str, class_dict, columns = 5, indices = slice(None, None, None)):
+    #print(str.format('indices: {}', indices))
     X = X[indices]
     title = title[indices]
     if xlabel.size > 0:
