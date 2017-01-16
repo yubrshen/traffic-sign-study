@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from display_samples import display_samples
-from sign_id_to_name import sign_id_to_name
+from displaySamples import display_samples
+from signIDtoName import sign_id_to_name
 
 rank_names = {0: 'Correct recognition',
                1: 'The target class as second guesses',
