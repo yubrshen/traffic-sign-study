@@ -29,16 +29,19 @@ def show_rank_counts(rank_counts, k):
     plt.legend(patches, labels, loc='best', bbox_to_anchor=(-0.1, 1.), fontsize=8)
     # Set aspect ratio to be equal so that pie is drawn as a circle.
     plt.axis('equal')
+    plt.show()
 
 def show_classifications(ranks, classified, xx, yy, k = 3, limit = 10):
     rank_counts = np.zeros(k+1, dtype=np.int)
     total_cases = len(yy)
-    for j in range(len(rank_counts)):
+    for j in range(len(rank_counts)): # for this loop, compute the rank_counts
         matched_idices = np.where(np.array(ranks) == j)
         rank_counts[j] = matched_idices[0].size
     show_rank_counts(rank_counts, k)
-    for j in range(len(rank_counts)):
+    for j in range(len(rank_counts)): # for this loop, again, need to compute the matched_indices, to do the display for each rank that has non-zero counts. 
+        # print(str.format('rank_counts[j]: {}, j: {}', rank_counts[j], j))
         if 0 < rank_counts[j]:
+            matched_idices = np.where(np.array(ranks) == j)
             print(str.format('{}: {:.2f}%, partial samples:', rank_label(j, k), (rank_counts[j]/total_cases)*100))
             display_samples(xx[matched_idices], np.array(classified)[matched_idices], 'Classified:',
                             yy[matched_idices], 'Expected:', sign_id_to_name, columns=5,
